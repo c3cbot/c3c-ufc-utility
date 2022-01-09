@@ -1,3 +1,5 @@
+// Copyright 2022 BadAimWeeb. All rights reserved. MIT license.
+
 var stringToBlob = function (str, mimetype) {
     var raw = str;
     var rawLength = raw.length;
@@ -14,7 +16,7 @@ var stringToBlob = function (str, mimetype) {
 };
 
 window.onload = function () {
-    document.getElementById("import").onchange = function (e) {
+    function importFunc(e, encrypted) {
         if (e.currentTarget.files[0]) {
             console.log(e.currentTarget.files[0]);
             if (e.currentTarget.files[0].type != "application/json") {
@@ -24,7 +26,21 @@ window.onload = function () {
             fr.readAsText(e.currentTarget.files[0], "UTF-8");
             fr.onload = function (evt) {
                 try {
-                    var j = JSON.parse(evt.target.result);
+                    let data = evt.target.result;
+
+                    if (encrypted) {
+                        // Asking for key
+                        let pwdKey = prompt("Please enter key to encrypt:");
+                        let keyHash = [...sha256(pwdKey || "").match(/.{2}/g)].map(e => parseInt(e, 16));
+
+                        let bytes = aesjs.utils.hex.toBytes(data);
+                        let aesCtr = new aesjs.ModeOfOperation.ctr(keyHash);
+                        let decryptedData = aesCtr.decrypt(bytes);
+
+                        data = aes.utils.utf8.fromBytes(decryptedData);
+                    }
+
+                    var j = JSON.parse(data);
                     if (Array.isArray(j)) {
                         chrome.cookies.getAll({
                             domain: "facebook.com"
@@ -67,7 +83,10 @@ window.onload = function () {
             }
         }
     }
-    document.getElementById("export").onclick = function () {
+    document.getElementById("import").onchange = (e) => importFunc(e, false);
+    document.getElementById("importenc").onchange = (e) => importFunc(e, true);
+
+    function exportFunc(encrypted) {
         chrome.cookies.getAll({
             domain: "facebook.com"
         }, function (cookies) {
@@ -81,6 +100,19 @@ window.onload = function () {
                 lastAccessed: new Date().toISOString()
             }));
             var fbstate = JSON.stringify(cok, null, 4);
+
+            if (encrypted) {
+                // Asking for key
+                let pwdKey = prompt("Please enter key to encrypt:");
+                let keyHash = [...sha256(pwdKey || "").match(/.{2}/g)].map(e => parseInt(e, 16));
+
+                let bytes = aesjs.utils.utf8.toBytes(fbstate);
+                let aesCtr = new aesjs.ModeOfOperation.ctr(keyHash);
+                let encryptedData = aesCtr.encrypt(bytes);
+
+                fbstate = aes.utils.hex.fromBytes(encryptedData);
+            }
+
             var blob = stringToBlob(fbstate, "application/json");
             var url = window.webkitURL || window.URL || window.mozURL || window.msURL;
             var a = document.createElement('a');
@@ -92,4 +124,6 @@ window.onload = function () {
             a.remove();
         });
     }
+    document.getElementById("export").onclick = () => exportFunc(false);
+    document.getElementById("exportenc").onclick = () => exportFunc(true);
 }

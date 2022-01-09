@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<!-- Copyright 2022 BadAimWeeb. All rights reserved. MIT license. -->
 <head>
+  <script src="aes.js"></script>
   <script src="popup.js"></script>
 </head>
 
@@ -14,6 +15,13 @@
       <input id="import" name="import" type="file" value="Import FBState"
         style="opacity: 0;height: 0px;width: 350px;display: flex;" />
     </div>
+    <div style="background: #34cc26; color: white; margin-bottom: 5px;" title="">
+      <label for="import"
+        style="padding: 5px; display: block; font-family: Arial, Helvetica, sans-serif; text-align: center;">Import
+        FBState (encrypted)</label>
+      <input id="importenc" name="importenc" type="file" value="Import FBState (encrypted)"
+        style="opacity: 0;height: 0px;width: 350px;display: flex;" />
+    </div>
     <div style="background: #d30a0a; color: white;" title="">
       <label for="export"
         style="padding: 5px; display: block; font-family: Arial, Helvetica, sans-serif; text-align: center;">Export
@@ -21,8 +29,15 @@
       <input id="export" name="export" type="button" value="Export FBState"
         style="opacity: 0;height: 0px;width: 350px;display: contents;" />
     </div>
+    <div style="background: #d30a0a; color: white;" title="">
+      <label for="export"
+        style="padding: 5px; display: block; font-family: Arial, Helvetica, sans-serif; text-align: center;">Export
+        FBState (encrypted)</label>
+      <input id="exportenc" name="exportenc" type="button" value="Export FBState (encrypted)"
+        style="opacity: 0;height: 0px;width: 350px;display: contents;" />
+    </div>
     <br>
-    <a href="https://github.com/lequanglam/c3c-fbstate/" target="_blank">GitHub!</a>
+    <a href="https://github.com/c3cbot/c3c-fbstate/" target="_blank">GitHub</a>
   </div>
 </body>
 
