@@ -2,43 +2,145 @@
 <html>
 <!-- Copyright 2022 BadAimWeeb. All rights reserved. MIT license. -->
 <head>
+  <script src="sha256.js"></script>
   <script src="aes.js"></script>
   <script src="popup.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins" , sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      width: 100%;
+      background: #c9c9c9;
+    }
+    .four_button .btn_imp, .four_button .btn_exp {
+      border: none;
+      border-radius: 50px;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+    	font-family: 'Rubik', sans-serif;
+    	font-size: 13px;
+      font-weight: 400;
+      margin-bottom: 5px;
+      outline: none;
+      padding: 9px;
+      position: relative;
+      transition: all 0.3s;
+      vertical-align: middle;
+      width: 100%;
+      height: 35px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      transition: all 0.4s ease;
+    }
+    .four_button .btn_imp:hover {
+      background-color: #468100;
+    }
+    .four_button .btn_exp:hover {
+      background-color: #bc6313;
+    }
+    .btn_imp {
+      background-color: #5fae02;
+    }
+    .btn_exp {
+      background-color: #e67e22;
+    }
+    .text-boxes {
+      width: 100%;
+      display: inline-block;
+    }
+    .text-boxes .topic {
+      font-size: 18px;
+      font-weight: 400;
+      color: #000000;
+      text-align: center;
+      margin-bottom: 12px;
+      margin-top: 6px;
+    }
+    .text-boxes textarea {
+      height: 400px;
+      width: 90%;
+      font-size: 12px;
+      font-weight: 400;
+      outline: none;
+      border: 1px solid #F2F3F7;
+      border-radius: 10px;
+      background: #CECECE;
+      padding: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 16px;
+    }
+    .text-boxes textarea::-webkit-scrollbar {
+      display: none;
+    }
+    .text-boxes .two_button {
+      display: flex;
+      align-items: center;
+      width: auto;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .text-boxes .two_button #btnCopy, .text-boxes .two_button #dlFbstate {
+      width: 270px;
+      height: 40px;
+      border: 1px solid #F2F3F7;
+      border-radius: 30px;
+      background: #2e9f3a;
+      text-align: center;
+      vertical-align: center;
+      font-size: 13px;
+      color: #ffffff;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      margin: 10px;
+    }
+    .text-boxes .two_button #btnCopy:hover, .text-boxes .two_button #dlFbstate:hover {
+      background: #407721;
+    }
+    @media (max-width: 400px) {
+      .text-boxes button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div style="width: auto; height: auto;">
-    <div style="background: #34cc26; color: white; margin-bottom: 5px;" title="">
-      <label for="import"
-        style="padding: 5px; display: block; font-family: Arial, Helvetica, sans-serif; text-align: center;">Import
-        FBState</label>
-      <input id="import" name="import" type="file" value="Import FBState"
-        style="opacity: 0;height: 0px;width: 350px;display: flex;" />
-    </div>
-    <div style="background: #34cc26; color: white; margin-bottom: 5px;" title="">
-      <label for="import"
-        style="padding: 5px; display: block; font-family: Arial, Helvetica, sans-serif; text-align: center;">Import
-        FBState (encrypted)</label>
-      <input id="importenc" name="importenc" type="file" value="Import FBState (encrypted)"
-        style="opacity: 0;height: 0px;width: 350px;display: flex;" />
-    </div>
-    <div style="background: #d30a0a; color: white;" title="">
-      <label for="export"
-        style="padding: 5px; display: block; font-family: Arial, Helvetica, sans-serif; text-align: center;">Export
-        FBState</label>
-      <input id="export" name="export" type="button" value="Export FBState"
-        style="opacity: 0;height: 0px;width: 350px;display: contents;" />
-    </div>
-    <div style="background: #d30a0a; color: white;" title="">
-      <label for="export"
-        style="padding: 5px; display: block; font-family: Arial, Helvetica, sans-serif; text-align: center;">Export
-        FBState (encrypted)</label>
-      <input id="exportenc" name="exportenc" type="button" value="Export FBState (encrypted)"
-        style="opacity: 0;height: 0px;width: 350px;display: contents;" />
-    </div>
+  <div class="four_button" style="width: auto; height: auto; margin-left: 20px; margin-right: 20px">
+    
     <br>
-    <a href="https://github.com/c3cbot/c3c-fbstate/" target="_blank">GitHub</a>
+    <input id="import" type="file" style="display: none; margin-top: 50px "/>
+    <label for="import" class="btn_imp">Import FBState</label>
+    <input id="importenc" type="file" style="display: none;"/>
+    <label for="importenc" class="btn_imp" style="margin-bottom: 15px;">Import FBState (encrypted)</label>
+
+
+    <input id="export" class="btn_exp" type="button" value="Export FBState"/>
+    <input id="exportenc" class="btn_exp" type="button" value="Export FBState (encrypted)"/>
+		
+    <p style="margin-top: 6px;">
+     <a href="https://github.com/c3cbot/c3c-fbstate/" target="_blank" style="color:#000000; font-size: 13px; height: auto; margin-top: 30px;">GitHub Author</a>
+    </p>
   </div>
+  
+  <div class="text-boxes">
+    <div class="topic">Your Fbstate Here:</div>
+    <textarea id="yourFbstate" placeholder="Your Fbstate"></textarea>
+    <div class="two_button">
+      <button id="btnCopy" class="btn">Copy to clipboard</button>
+      <button id="dlFbstate" class="btn">Download Fbstate.json</button>
+    </div>
+  </div>
+  
 </body>
 
 </html>
