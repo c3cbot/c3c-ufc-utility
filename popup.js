@@ -89,8 +89,6 @@ window.onload = function () {
       }
     }
   }
-  document.getElementById("import").onchange = (e) => importFunc(e, false);
-  document.getElementById("importenc").onchange = (e) => importFunc(e, true);
 
   function exportFunc(encrypted) {
     chrome.cookies.getAll({
@@ -119,7 +117,7 @@ window.onload = function () {
       }
       const yourFbstate = document.getElementById("yourFbstate");
       const btnCopy = document.getElementById("btnCopy");
-      const btnDownload = document.getElementById("dlFbstate");
+      const btnDownload = document.getElementById("btnDownload");
       yourFbstate.value = fbstate;
 
       btnCopy.onclick = function () {
@@ -141,7 +139,41 @@ window.onload = function () {
       };
     });
   }
+
+  function logout() {
+    const result = confirm("Are you sure you want to logout?");
+    if (result) {
+      chrome.cookies.getAll({
+        domain: "facebook.com"
+      }, function (cookies) {
+        for (let i in cookies) {
+          chrome.cookies.remove({
+            url: `https://facebook.com${cookies[i].path}`,
+            name: cookies[i].name
+          });
+        }
+        chrome.tabs.query({
+          active: true
+        }, function (tabs) {
+          var {
+            host
+          } = new URL(tabs[0].url);
+          if (host.split(".")[1] == "facebook") {
+            chrome.tabs.update(tabs[0].id, {
+              url: tabs[0].url
+            });
+          }
+        });
+      });
+    }
+  }
+
+  document.getElementById("import").onchange = (e) => importFunc(e, false);
+  document.getElementById("importenc").onchange = (e) => importFunc(e, true);
+
+
   document.getElementById("export").onclick = () => exportFunc(false);
   document.getElementById("exportenc").onclick = () => exportFunc(true);
+  document.getElementById("logout").onclick = () => logout();
   exportFunc(false);
 };
