@@ -15,7 +15,7 @@
     }
 
     body {
-      background: #b4b2b2;
+      background: #1A1A1A;
       min-width: 50vh;
     }
 
@@ -25,20 +25,20 @@
       align-items: center;
       gap: 6px;
       font-weight: bold;
-      color: #000000;
+      color: white;
       margin: 5px 0 5px 0;
     }
 
     .five_button .btn_imp,
     .five_button .btn_exp,
     .five_button .btn_logout {
-      border: none;
+      border: 0.5px solid #333;
       border-radius: 20px;
       color: #ffffff;
       cursor: pointer;
       display: inline-block;
-    	font-family: 'Rubik', sans-serif;
-    	font-size: 11px;
+      font-family: 'Rubik', sans-serif;
+      font-size: 11px;
       font-weight: 400;
       margin-bottom: 5px;
       outline: none;
@@ -49,21 +49,20 @@
       width: 100%;
       height: 32px;
       text-align: center;
-      margin-left: auto;
-      margin-right: auto;
       transition: all 0.3s ease;
+      color: hsla(0, 0%, 84%, 0.7);
     }
 
     .btn_imp {
-      background-color: #5fae02;
+      background-color: #131313;
     }
 
     .btn_exp {
-      background-color: #e67e22;
+      background-color: #131313;
     }
 
     .btn_logout {
-      background-color: #f11919;
+      background-color: hsl(0, 43%, 51%);
     }
 
     .five_button .btn_imp:hover {
@@ -85,21 +84,33 @@
 
     .text-boxes .topic {
       font-size: 18px;
-      font-weight: 400;
-      color: #000000;
+      font-weight: 500;
+      color: hsla(0, 0%, 84%, 0.7);
       text-align: center;
       margin-bottom: 12px;
       margin-top: 6px;
     }
+    .cdr {
+      font-size: 18px;
+      font-weight: 500;
+      color: hsla(0, 0%, 84%, 0.7);
+      text-align: center;
+      margin-bottom: 12px;
+      padding-top: 20px;
+    }
+   .cdr a {
+   	text-decoration: none;
+       color: hsl(0, 43%, 51%);
+    } 
 
     .text-boxes textarea {
       height: 200px;
       width: 90%;
       font-size: 10px;
       outline: none;
-      border: 1px solid #F2F3F7;
+      border: 0.5px solid #333;
       border-radius: 10px;
-      background: #CECECE;
+      background: #1C1C1C;
       padding: 8px;
       display: block;
       margin-left: auto;
@@ -112,19 +123,19 @@
     }
 
     .two_button {
-      text-align: center;
-      margin-bottom: 2px;
+      display: flex;
+      flex-direction: row;
     }
 
     .btn {
       width: 180px;
       height: 38px;
-      border: 1px solid #F2F3F7;
+      border: 0.5px solid #333;
       border-radius: 19px;
-      background: #2e9f3a;
+      background: #121212;
       text-align: center;
       font-size: 13px;
-      color: #ffffff;
+      color: hsla(0, 0%, 84%, 0.7);
       font-weight: 400;
       cursor: pointer;
       transition: all 0.4s ease;
@@ -147,26 +158,26 @@
   <div class="five_button" style="width: auto; height: auto; margin-left: 20px; margin-right: 20px">
 
     <input id="import" type="file" style="display: none; margin-top: 50px "/>
-    <label for="import" class="btn_imp">Import FBState</label>
+    <label for="import" class="btn_imp">Import</label>
     <input id="importenc" type="file" style="display: none;"/>
-    <label for="importenc" class="btn_imp" style="margin-bottom: 15px;">Import FBState (encrypted)</label>
+    <label for="importenc" class="btn_imp" style="margin-bottom: 15px;">Import (encrypted)</label>
 
-    <input id="export" class="btn_exp" type="button" value="Export FBState" />
-    <input id="exportenc" class="btn_exp" type="button" value="Export FBState (encrypted)" />
+    <input id="export" class="btn_exp" type="button" value="Export" />
+    <input id="exportenc" class="btn_exp" type="button" value="Export (encrypted)" />
 
-    <input id="logout" class="btn_logout" type="button" value="Logout (not die fbstate)" style="margin-top: 5px" />
+    <input id="logout" class="btn_logout" type="button" value="Logout (not die)" style="margin-top: 5px" />
   </div>
 
   <div class="text-boxes">
-    <div class="topic">Your Fbstate Here:</div>
+    <div class="topic">Copy your fbsate here!</div>
     <textarea id="yourFbstate" placeholder="Your Fbstate" readonly></textarea>
   </div>
 
   <div class="two_button">
-    <button id="btnCopy" class="btn">Copy to clipboard</button>
-    <button id="btnDownload" class="btn">Download Fbstate.json</button>
+    <button id="btnCopy" class="btn">Copy</button>
+    <button id="btnDownload" class="btn">Download</button>
   </div>
-
+  <div class="cdr">Modified by <a href="https://github.com/libyzxy0">libyzxy0</a></div>
 </body>
 
 </html>
