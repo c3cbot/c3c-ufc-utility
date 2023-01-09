@@ -37,8 +37,8 @@
       color: #ffffff;
       cursor: pointer;
       display: inline-block;
-    	font-family: 'Rubik', sans-serif;
-    	font-size: 11px;
+      font-family: 'Rubik', sans-serif;
+      font-size: 11px;
       font-weight: 400;
       margin-bottom: 5px;
       outline: none;
@@ -135,20 +135,91 @@
     .two_button #btnDownload:hover {
       opacity: 0.5;
     }
+
+    #snackbar {
+      left: 50%;
+      transform: translate(-50%, 0);
+      visibility: hidden;
+      min-width: 250px;
+      margin: 0 5px 0 5px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 2px;
+      padding: 16px;
+      position: fixed;
+      z-index: 1;
+      bottom: 30px;
+    }
+
+    #snackbar.show {
+      visibility: visible;
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="author">
-    <a href="https://github.com/c3cbot/c3c-fbstate/" target="_blank" class="author"><img src="./logo/128.png" alt="logo" width="20px" height="20px"></a>
+    <a href="https://github.com/c3cbot/c3c-fbstate/" target="_blank" class="author"><img src="./logo/128.png" alt="logo"
+        width="20px" height="20px"></a>
     <a href="https://github.com/c3cbot/c3c-fbstate/" target="_blank" class="author">Github Author</a>
   </div>
 
   <div class="five_button" style="width: auto; height: auto; margin-left: 20px; margin-right: 20px">
 
-    <input id="import" type="file" style="display: none; margin-top: 50px "/>
+    <input id="import" type="file" style="display: none; margin-top: 50px " />
     <label for="import" class="btn_imp">Import FBState</label>
-    <input id="importenc" type="file" style="display: none;"/>
+    <input id="importenc" type="file" style="display: none;" />
     <label for="importenc" class="btn_imp" style="margin-bottom: 15px;">Import FBState (encrypted)</label>
 
     <input id="export" class="btn_exp" type="button" value="Export FBState" />
@@ -166,6 +237,8 @@
     <button id="btnCopy" class="btn">Copy to clipboard</button>
     <button id="btnDownload" class="btn">Download Fbstate.json</button>
   </div>
+
+  <div id="snackbar"></div>
 
 </body>
 
