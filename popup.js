@@ -16,11 +16,22 @@ var stringToBlob = function (str, mimetype) {
 };
 
 window.onload = function () {
+    function toastNotification(message) {
+        var x = document.getElementById("snackbar");
+				x.addEventListener("click", function() {
+					x.className = x.className.replace("show", "");
+				});
+        x.innerHTML = message;
+        x.className = "show";
+        setTimeout(function () {
+						x.className = x.className.replace("show", "");
+        }, 3000);
+    }
+
     function importFunc(e, encrypted) {
         if (e.currentTarget.files[0]) {
-            console.log(e.currentTarget.files[0]);
             if (e.currentTarget.files[0].type != "application/json") {
-                alert("Invalid file given");
+                toastNotification("Invalid file given");
             }
             var fr = new FileReader();
             fr.readAsText(e.currentTarget.files[0], "UTF-8");
@@ -30,12 +41,12 @@ window.onload = function () {
 
                     if (encrypted) {
                         // Asking for key
-                        let pwdKey = prompt("Please enter key to encrypt:");
-                        let keyHash = [...sha256(pwdKey || "").match(/.{2}/g)].map(e => parseInt(e, 16));
+                        const pwdKey = prompt("Please enter key to encrypt:");
+                        const keyHash = [...sha256(pwdKey || "").match(/.{2}/g)].map(e => parseInt(e, 16));
 
-                        let bytes = aesjs.utils.hex.toBytes(data);
-                        let aesCtr = new aesjs.ModeOfOperation.ctr(keyHash);
-                        let decryptedData = aesCtr.decrypt(bytes);
+                        const bytes = aesjs.utils.hex.toBytes(data);
+                        const aesCtr = new aesjs.ModeOfOperation.ctr(keyHash);
+                        const decryptedData = aesCtr.decrypt(bytes);
 
                         data = aesjs.utils.utf8.fromBytes(decryptedData);
                     }
@@ -81,10 +92,10 @@ window.onload = function () {
                             });
                         });
                     } else {
-                        alert("Invalid JSON file (not a FBState JSON file).");
+                        toastNotification("Invalid JSON file (not a FBState JSON file).");
                     }
                 } catch (_) {
-                    alert("Failed to load JSON file (malformed?)");
+                    toastNotification("Failed to load JSON file (malformed?)");
                 }
             }
         }
@@ -123,7 +134,7 @@ window.onload = function () {
             btnCopy.onclick = function () {
                 yourFbstate.select();
                 document.execCommand("copy");
-                window.alert('Success! The fbstate was copied to your clipboard');
+                toastNotification('Success! The fbstate was copied to your clipboard');
             };
 
             btnDownload.onclick = function () {
@@ -135,6 +146,7 @@ window.onload = function () {
                 a.textContent = '';
                 a.dataset.downloadurl = ['json', a.download, a.href].join(':');
                 a.click();
+								toastNotification('Success! The fbstate was downloaded ' + a.download);
                 a.remove();
             };
         });
@@ -158,7 +170,7 @@ window.onload = function () {
                 chrome.tabs.query({
                     active: true
                 }, function (tabs) {
-                    var {
+                    const {
                         host
                     } = new URL(tabs[0].url);
                     if (host.split(".")[1] == "facebook") {
