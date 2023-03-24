@@ -1,6 +1,6 @@
 {
   "name": "C3C FBState Utility",
-  "version": "1.4",
+  "version": "1.5",
   "description": "Import/export fbstate.json which can be used to let bot login.",
   "permissions": [
     "cookies",
