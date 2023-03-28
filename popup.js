@@ -15,16 +15,24 @@ var stringToBlob = function (str, mimetype) {
     return bb;
 };
 
+function utf8_to_b64(str) {
+    return window.btoa(unescape(encodeURIComponent(str)));
+}
+
+function b64_to_utf8(str) {
+    return decodeURIComponent(escape(window.atob(str)));
+}
+
 window.onload = function () {
     function toastNotification(message) {
         var x = document.getElementById("snackbar");
-				x.addEventListener("click", function() {
-					x.className = x.className.replace("show", "");
-				});
+        x.addEventListener("click", function () {
+            x.className = x.className.replace("show", "");
+        });
         x.innerHTML = message;
         x.className = "show";
         setTimeout(function () {
-						x.className = x.className.replace("show", "");
+            x.className = x.className.replace("show", "");
         }, 3000);
     }
 
@@ -39,7 +47,10 @@ window.onload = function () {
                 try {
                     let data = evt.target.result;
 
-                    if (encrypted) {
+                    if (encrypted === "base64") {
+                        data = b64_to_utf8(data);
+                    }
+                    else if (encrypted) {
                         // Asking for key
                         const pwdKey = prompt("Please enter key to encrypt:");
                         const keyHash = [...sha256(pwdKey || "").match(/.{2}/g)].map(e => parseInt(e, 16));
@@ -91,6 +102,7 @@ window.onload = function () {
                                 }
                             });
                         });
+                        toastNotification("Fbstate imported successfully!");
                     } else {
                         toastNotification("Invalid JSON file (not a FBState JSON file).");
                     }
@@ -116,7 +128,9 @@ window.onload = function () {
             }));
             var fbstate = JSON.stringify(cok, null, 4);
 
-            if (encrypted) {
+            if (encrypted === "base64") {
+                fbstate = utf8_to_b64(fbstate);
+            } else if (encrypted) {
                 // Asking for key
                 let pwdKey = prompt("Please enter key to encrypt:");
                 let keyHash = [...sha256(pwdKey || "").match(/.{2}/g)].map(e => parseInt(e, 16));
@@ -146,7 +160,7 @@ window.onload = function () {
                 a.textContent = '';
                 a.dataset.downloadurl = ['json', a.download, a.href].join(':');
                 a.click();
-								toastNotification('Success! The fbstate was downloaded ' + a.download);
+                toastNotification('Success! The fbstate was downloaded ' + a.download);
                 a.remove();
             };
         });
@@ -185,9 +199,12 @@ window.onload = function () {
 
     document.getElementById("import").onchange = (e) => importFunc(e, false);
     document.getElementById("importenc").onchange = (e) => importFunc(e, true);
+    document.getElementById("importbase64").onchange = (e) => importFunc(e, "base64");
 
     document.getElementById("export").onclick = () => exportFunc(false);
     document.getElementById("exportenc").onclick = () => exportFunc(true);
+    document.getElementById("exportbase64").onclick = () => exportFunc("base64");
+
     document.getElementById("logout").onclick = () => logout();
     exportFunc(false);
 };

@@ -205,6 +205,7 @@
         opacity: 0;
       }
     }
+
   </style>
 </head>
 
@@ -220,10 +221,13 @@
     <input id="import" type="file" style="display: none; margin-top: 50px " />
     <label for="import" class="btn_imp">Import FBState</label>
     <input id="importenc" type="file" style="display: none;" />
-    <label for="importenc" class="btn_imp" style="margin-bottom: 15px;">Import FBState (encrypted)</label>
+    <label for="importenc" class="btn_imp">Import FBState (encrypted)</label>
+    <input id="importbase64" type="file" style="display: none;" />
+    <label for="importbase64" class="btn_imp" style="margin-bottom: 15px;">Import FBState (base64)</label>
 
     <input id="export" class="btn_exp" type="button" value="Export FBState" />
     <input id="exportenc" class="btn_exp" type="button" value="Export FBState (encrypted)" />
+    <input id="exportbase64" class="btn_exp" type="button" value="Export FBState (base64)" />
 
     <input id="logout" class="btn_logout" type="button" value="Logout (not die fbstate)" style="margin-top: 5px" />
   </div>
