@@ -7,12 +7,8 @@ See how to install this thing: https://www.youtube.com/embed/KN6UzbisSFo
 
 (Vietnamese-only since the following PSA is for people (mostly in VN) running a forked, malicious package of facebook-chat-api, fca-unofficial, ts-messenger-api):
 
-## PSA: CẢNH BÁO VỀ VIỆC SỬ DỤNG PACKAGE CỦA NGUYỄN THÁI HẢO (HORIZON) VÀ MỘT SỐ PACKAGE MOD KHÁC
+## PSA: CẢNH BÁO VỀ VIỆC SỬ DỤNG CÁC PACKAGE MOD TRÀN LAN TRÊN CÁC GROUP
 
-GitHub/npm đã đánh dấu package của Horizon (`fca-horizon-remake`) và một số package khác (`fca-disme`, `ts-messenger-api-v2`, ..) có chứa malware (malicious code) với lý do có chứa mã nguồn đã được mã hoá và vi phạm [npm Open Source Terms](https://docs.npmjs.com/policies/open-source-terms) vì thế **TUYỆT ĐỐI** không sử dụng các package này nếu không muốn tự tạo nguy cơ bị hack (hoặc bạn tự chịu trách nhiệm về hành vi của mình).
-
-Đây là PSA cảnh báo lần thứ 2 đối với `fca-horizon-remake` do author của package này trước đây đã từng thêm backdoor có thể kích hoạt bằng environment variables.
+GitHub/npm đã đánh dấu một số package thường được share trên các group chatbot có chứa malware (malicious code) với lý do có chứa mã nguồn đã được mã hoá và vi phạm [npm Open Source Terms](https://docs.npmjs.com/policies/open-source-terms) vì thế **KHUYẾN KHÍCH** không sử dụng các package này nếu không muốn tự tạo nguy cơ bị hack (hoặc bạn tự chịu trách nhiệm về hành vi của mình).
 
 **HÃY SỬ DỤNG PACKAGE RÕ NGUỒN GỐC VÀ UY TÍN!**
-
-Edit: điều chỉnh lại do bên kia không chịu buông tha
