@@ -3,6 +3,10 @@ A Chrome extension. Used to import/export fbstate.json file to be used with C3C 
 
 See how to install this thing: https://www.youtube.com/embed/KN6UzbisSFo
 
+**c3c-fbstate HIỆN TẠI CHƯA ĐƯỢC ĐĂNG CHÍNH THỨC LÊN CHROME WEB STORE. HÃY CẨN THẬN KHI SỬ DỤNG EXTENSION TRÊN ĐÓ (TỐT NHẤT KHÔNG NÊN DÙNG).**
+
+**c3c-fbstate DOES NOT GET PUBLISHED ON CHROME WEB STORE YET. BEWARE OF RISKS WHEN USING UNOFFICIAL PUBLISHED VERSIONS, IT'S BEST NOT TO USE THOSE VERSIONS.**
+
 -----
 
 (Vietnamese-only since the following PSA is for people (mostly in VN) running a forked, malicious package of facebook-chat-api, fca-unofficial, ts-messenger-api):
