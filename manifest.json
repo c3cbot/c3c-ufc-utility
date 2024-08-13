@@ -1,19 +1,16 @@
 {
+  "$schema": "https://raw.githubusercontent.com/cezaraugusto/chrome-extension-manifest-json-schema/main/manifest/manifest.schema.v3.json",
   "name": "C3C FBState Utility",
-  "version": "1.5",
+  "version": "2.0",
   "description": "Import/export fbstate.json which can be used to let bot login.",
   "permissions": [
     "cookies",
-    "activeTab",
+    "activeTab"
+  ],
+  "host_permissions": [
     "https://*.facebook.com/"
   ],
-  "background": {
-    "scripts": [
-      "background.js"
-    ],
-    "persistent": false
-  },
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "logo/16.png",
@@ -30,5 +27,5 @@
     "64": "logo/64.png",
     "128": "logo/128.png"
   },
-  "manifest_version": 2
+  "manifest_version": 3
 }
