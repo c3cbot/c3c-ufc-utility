@@ -9,5 +9,5 @@ let manifest = JSON.parse(readFileSync(resolve(currentDir, "src", "manifest.json
 manifest.version = packageJSON.version;
 
 writeFileSync(resolve(currentDir, "dist", "manifest.json"), JSON.stringify(manifest, null, "\t"));
-writeFileSync(resolve(currentDir, "dist", "index.html"), readFileSync(resolve(currentDir, "index.html"), { encoding: "utf-8" }).replace('src="/src/gui/main.tsx"', 'src="/popup-gui.js"'));
+// writeFileSync(resolve(currentDir, "dist", "index.html"), readFileSync(resolve(currentDir, "index.html"), { encoding: "utf-8" }).replace('src="/src/gui/main.tsx"', 'src="/popup-gui.js"'));
 cpSync(resolve(currentDir, "assets"), resolve(currentDir, "dist", "assets"), { recursive: true });

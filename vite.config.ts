@@ -11,17 +11,17 @@ export default defineConfig({
         })
     ],
     build: {
-        rollupOptions: {
-            input: {
-                popup_gui: "src/gui/main.tsx"
-            },
-            output: {
-                dir: "dist",
-                entryFileNames: (info) =>
-                    info.name === "popup_gui" ? "popup-gui.js" :
-                        "assets/[name]-[hash].js"
-            }
-        },
+        // rollupOptions: {
+        //     input: {
+        //         popup_gui: "src/gui/main.tsx"
+        //     },
+        //     output: {
+        //         dir: "dist",
+        //         entryFileNames: (info) =>
+        //             info.name === "popup_gui" ? "popup-gui.js" :
+        //                 "assets/[name]-[hash].js"
+        //     }
+        // },
         target: [
             'chrome89',
             'firefox89',

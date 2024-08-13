@@ -5,8 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-    overflow-x: clip;
-    min-width: 282px;
+    min-width: 450px;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -14,40 +13,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-.rainbow_text {
-    background: linear-gradient(to right,
-            #ff0000,
-            #ffff00,
-            #00ff00,
-            #00ffff,
-            #0000ff,
-            #ff00ff,
-            #ff0000,
-            #ffff00,
-            #00ff00);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: #FFF9 !important;
-    animation: rainbow_animation 4s linear infinite;
-    background-size: 400% 100%;
-}
-
-
-@keyframes rainbow_animation {
-    0% {
-        background-position: 0 0;
-    }
-
-    100% {
-        background-position: 100% 0;
-    }
-}
-
-/* dark text shadow */
-.shadow {
-    text-shadow: 0 0 0.9px #FFF3;
 }
 
 .main {
