@@ -4,10 +4,12 @@ import GetAppIcon from '@mui/icons-material/GetApp';
 import LogoutIcon from "@mui/icons-material/Logout"
 import SaveAsIcon from "@mui/icons-material/SaveAs"
 import AssignmentIcon from "@mui/icons-material/Assignment"
-import { useCallback, useEffect, useRef, useState } from 'react';
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
+import { useCallback, useState } from 'react';
 import { prompt } from 'mdui/functions/prompt.js';
 import { alert } from 'mdui/functions/alert.js';
 import { confirm } from 'mdui/functions/confirm.js';
+import ClearIcon from "@mui/icons-material/Clear"
 
 const fixIcon = {
     marginBottom: '5px',
@@ -17,26 +19,6 @@ const fixIcon = {
 function App() {
     const [lastExportedType, setLastExportedType] = useState<"json" | "base64" | "encrypted">("json");
     const [value, setValue] = useState('');
-    const inputRef = useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-        //#region mdui#338 workaround
-        const injectedSheet = new CSSStyleSheet;
-        injectedSheet.replaceSync(`.input { padding-right: 16px; } .container { padding-right: 0; }`);
-        inputRef.current?.shadowRoot?.adoptedStyleSheets.push(injectedSheet);
-        //#endregion
-
-        const handleInputUpdate = () => {
-            setValue(inputRef.current?.value || '');
-            console.log(inputRef.current?.value);
-        };
-
-        inputRef.current?.addEventListener('keydown', handleInputUpdate);
-
-        return () => {
-            inputRef.current?.removeEventListener('keydown', handleInputUpdate);
-        };
-    }, []);
 
     //#region Handle import
     const handleImport = useCallback(async () => {
@@ -230,6 +212,14 @@ function App() {
     //#endregion
 
     //#region Various buttons
+    const handleClear = useCallback(() => {
+        setValue('');
+    }, []);
+
+    const handlePasteData = useCallback(async () => {
+        setValue(await navigator.clipboard.readText());
+    }, []);
+
     const handleCopy = useCallback(() => {
         navigator.clipboard.writeText(value);
     }, [value]);
@@ -290,6 +280,7 @@ function App() {
     }, []);
     //#endregion
 
+
     return (
         <>
             <div className="main">
@@ -335,20 +326,16 @@ function App() {
                                 <mdui-menu-item onClick={handleExportBase64}>Base64</mdui-menu-item>
                             </mdui-menu>
                         </mdui-dropdown>
-                        <mdui-tooltip onClick={deleteState} placement='top-end' content="Delete local FBState (logout without FBState invalidation)">
+                        <mdui-tooltip variant="rich" onClick={deleteState} placement='top-end' content="Delete local FBState (logout without FBState invalidation)">
                             <mdui-button-icon variant="outlined">
                                 <LogoutIcon />
                             </mdui-button-icon>
                         </mdui-tooltip>
                     </div>
-                    <mdui-text-field
-                        rows={10}
-                        style={{
-                            fontFamily: 'monospace, consolas'
-                        }}
-                        variant="outlined"
+                    <textarea
+                        className="mainInput"
                         value={value}
-                        ref={inputRef}
+                        onChange={(e) => setValue(e.target.value)}
                     />
                     <div className="action">
                         <mdui-button onClick={handleCopy} variant='filled' slot="trigger" style={{ flex: 1 }}>
@@ -363,6 +350,16 @@ function App() {
                                 <SaveAsIcon />
                             </mdui-icon>
                         </mdui-button>
+                        <mdui-tooltip variant="rich" placement='top-end' content="Paste from clipboard">
+                            <mdui-button-icon onClick={handlePasteData} variant="outlined">
+                                <ContentPasteIcon />
+                            </mdui-button-icon>
+                        </mdui-tooltip>
+                        <mdui-tooltip variant="rich" placement='top-end' content="Clear">
+                            <mdui-button-icon onClick={handleClear} variant="outlined">
+                                <ClearIcon />
+                            </mdui-button-icon>
+                        </mdui-tooltip>
                     </div>
                 </div>
             </div>
