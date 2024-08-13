@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import react from '@preact/preset-vite'
+import react from '@vitejs/plugin-react'
 import vitePluginExecute from "vite-plugin-execute";
 
 // https://vitejs.dev/config/
