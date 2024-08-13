@@ -1,0 +1,88 @@
+:root {
+    --mdui-shape-corner-full: 7px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, .7);
+    border-radius: 10px;
+    background-clip: content-box;
+    border: 4px solid transparent;
+    transition: .2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-clip: content-box;
+    border: 3px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: rgba(128, 128, 128, .4);
+    background-clip: content-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 550px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+
+    .content {
+        margin: 1rem;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 1rem;
+
+        .action {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.8rem;
+        }
+    }
+}
+
+.mainInput {
+    max-height: 300px;
+    height: 300px;
+    box-shadow: inset 0 0 0 .0625rem rgb(var(--mdui-color-outline));
+    border-radius: var(--mdui-shape-corner-extra-small);
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: box-shadow var(--mdui-motion-duration-short4) var(--mdui-motion-easing-standard);
+    padding: 1rem;
+    outline: none;
+    font-family: monospace;
+    resize: none;
+
+    &:hover {
+        box-shadow: inset 0 0 0 .0625rem rgb(var(--mdui-color-on-surface));
+    }
+
+    &:focus,
+    &:active {
+        box-shadow: inset 0 0 0 .125rem rgb(var(--mdui-color-primary));
+    }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "c3c-fbstate",
+  "version": "2.0.0",
+  "private": true,
+  "description": "An extension that bridges Facebook Messenger WS data to other bots",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BadAimWeeb/xfrelay.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "author": "BadAimWeeb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BadAimWeeb/xfrelay/issues"
+  },
+  "dependencies": {
+    "@emotion/styled": "^11.13.0",
+    "@fontsource/roboto": "^5.0.14",
+    "@mui/icons-material": "^5.16.7",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "mdui": "^2.1.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "homepage": "https://github.com/BadAimWeeb/xfrelay#readme",
+  "devDependencies": {
+    "@types/chrome": "^0.0.270",
+    "@types/node": "^22.2.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "sass": "^1.77.8",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0",
+    "vite-plugin-execute": "^0.0.2"
+  },
+  "type": "module"
+}
