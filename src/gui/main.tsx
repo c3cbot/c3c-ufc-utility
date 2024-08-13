@@ -1,6 +1,15 @@
-import { render } from 'preact'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 
-import "./index.css";
+import '@fontsource/roboto';
+import 'mdui/mdui.css';
+import 'mdui';
 
-render(<App />, document.getElementById('app')!)
+import "./index.scss";
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+)

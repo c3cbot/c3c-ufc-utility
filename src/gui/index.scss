@@ -1,9 +1,13 @@
+:root {
+    --mdui-shape-corner-full: 7px;
+}
+
 body {
     margin: 0;
     padding: 0;
     overflow-x: clip;
-
     min-width: 282px;
+    font-family: 'Roboto', sans-serif;
 }
 
 #root {
@@ -44,4 +48,28 @@ body {
 /* dark text shadow */
 .shadow {
     text-shadow: 0 0 0.9px #FFF3;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+
+    .content {
+        margin: 1rem;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 1rem;
+
+        .action {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.8rem;
+        }
+    }
 }
