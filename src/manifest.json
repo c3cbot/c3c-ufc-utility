@@ -27,5 +27,10 @@
         "64": "assets/logo/64.png",
         "128": "assets/logo/128.png"
     },
-    "manifest_version": 3
+    "manifest_version": 3,
+    "browser_specific_settings": {
+		"gecko": {
+			"id": "{91e2b93a-c014-4d6f-a384-a015e85f0727}"
+		}
+	}
 }

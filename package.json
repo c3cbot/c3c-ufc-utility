@@ -1,6 +1,6 @@
 {
   "name": "c3c-fbstate",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "description": "An extension that bridges Facebook Messenger WS data to other bots",
   "repository": {

@@ -1,11 +1,10 @@
 # c3c-fbstate
-A Chromium-based browser extension. Used to import/export fbstate.json file to be used with C3C or any other bots based on fca-unofficial/facebook-chat-api.
 
-See how to install this thing (v1): https://www.youtube.com/embed/KN6UzbisSFo
+[![Now available in Chrome Web Store!](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/c3c-fbstate-utility/ekgmbjnloldgikngiachemodebfpkgdp)
 
-**Warning: [This extension on Chrome Web Store](https://chromewebstore.google.com/detail/nenlpcnfiedlfhhdnjinjaajpkpealil) IS NOT AN OFFICIAL RELEASE AND IS NOT AUTHORIZED TO DO SO.**
+A Chromium-based/Firefox-compatible browser extension. Used to import/export fbstate.json file to be used with C3C or any other bots based on fca-unofficial/facebook-chat-api.
 
-**THE OFFICIAL RELEASE WILL BE AVAILABLE SOON.**
+~~See how to install this thing (v1): https://www.youtube.com/embed/KN6UzbisSFo~~
 
 -----
 
