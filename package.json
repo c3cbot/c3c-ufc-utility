@@ -1,11 +1,11 @@
 {
-  "name": "c3c-fbstate",
+  "name": "c3c-ufc-utility",
   "version": "2.0.1",
   "private": true,
-  "description": "An extension that bridges Facebook Messenger WS data to other bots",
+  "description": "Import/export UFC file from/to C3C-supported platforms.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BadAimWeeb/xfrelay.git"
+    "url": "git+https://github.com/c3cbot/c3c-ufc-utility.git"
   },
   "scripts": {
     "dev": "vite",
@@ -16,7 +16,7 @@
   "author": "BadAimWeeb",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BadAimWeeb/xfrelay/issues"
+    "url": "https://github.com/c3cbot/c3c-ufc-utility/issues"
   },
   "dependencies": {
     "@emotion/styled": "^11.13.0",
@@ -28,7 +28,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
-  "homepage": "https://github.com/BadAimWeeb/xfrelay#readme",
+  "homepage": "https://github.com/c3cbot/c3c-ufc-utility#readme",
   "devDependencies": {
     "@types/chrome": "^0.0.270",
     "@types/node": "^22.2.0",

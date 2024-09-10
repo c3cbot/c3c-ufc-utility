@@ -25,12 +25,12 @@ function App() {
         if (!value) {
             alert({
                 headline: "Error",
-                description: "Please input FBState first.",
+                description: "Please input UFC data first.",
             });
             return;
         }
 
-        let parsedFBState: {
+        let parsedUFC: {
             key: string,
             value: string,
             path: string,
@@ -39,24 +39,26 @@ function App() {
 
         // Try JSON first
         try {
-            parsedFBState = JSON.parse(value);
+            parsedUFC = JSON.parse(value);
         } catch {
             // Try base64
             try {
-                parsedFBState = JSON.parse(atob(value));
+                parsedUFC = JSON.parse(atob(value));
             } catch {
                 // Test if data is hex (sign of encrypted data)
                 if (/^[0-9a-fA-F]+$/.test(value) && !(value.length % 2)) {
                     let k = await new Promise<string>((resolve, reject) => {
                         prompt({
-                            headline: "Import encrypted FBState",
-                            description: "Please enter password to decrypt your FBState",
+                            headline: "Import encrypted UFC data",
+                            description: "Please enter password to decrypt your UFC data",
                             confirmText: "OK",
                             cancelText: "Cancel",
                             onConfirm: (value) => resolve(value),
                             onCancel: () => reject("User cancelled"),
+                            closeOnEsc: true,
                             textFieldOptions: {
-                                type: "password"
+                                type: "password",
+                                autofocus: true                                
                             }
                         });
                     });
@@ -78,7 +80,7 @@ function App() {
                     }, key, e);
 
                     try {
-                        parsedFBState = JSON.parse(new TextDecoder().decode(decrypted));
+                        parsedUFC = JSON.parse(new TextDecoder().decode(decrypted));
                     } catch {
                         alert({
                             headline: "Error",
@@ -89,17 +91,17 @@ function App() {
                 } else {
                     alert({
                         headline: "Error",
-                        description: "Invalid FBState input.",
+                        description: "Invalid UFC data input.",
                     });
                     return;
                 }
             }
         }
 
-        if (!parsedFBState || !Array.isArray(parsedFBState)) {
+        if (!parsedUFC || !Array.isArray(parsedUFC)) {
             alert({
                 headline: "Error",
-                description: "Invalid FBState input.",
+                description: "Invalid UFC data input.",
             });
             return;
         }
@@ -117,7 +119,7 @@ function App() {
         }
 
         // Set new cookies
-        for (let cookie of parsedFBState) {
+        for (let cookie of parsedUFC) {
             if (cookie.domain.endsWith("facebook.com")) {
                 await chrome.cookies.set({
                     url: "https://facebook.com" + cookie.path,
@@ -196,13 +198,15 @@ function App() {
 
     const handleExportEncrypted = useCallback(() => {
         prompt({
-            headline: "Export encrypted FBState",
-            description: "Please enter password to encrypt your FBState",
+            headline: "Export encrypted UFC data",
+            description: "Please enter password to encrypt your UFC data",
             confirmText: "OK",
             cancelText: "Cancel",
             onConfirm: (value) => handleExport("json", value),
+            closeOnEsc: true,
             textFieldOptions: {
-                type: "password"
+                type: "password",
+                autofocus: true
             }
         });
     }, [handleExport]);
@@ -229,9 +233,9 @@ function App() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = lastExportedType === "json" ? 'fbstate.json' :
-            lastExportedType === "base64" ? 'fbstate.b64' :
-                'fbstate.enc';
+        a.download = lastExportedType === "json" ? 'ufc-facebook.json' :
+            lastExportedType === "base64" ? 'ufc-facebook.b64' :
+                'ufc-facebook.enc';
         a.click();
         URL.revokeObjectURL(url);
     }, [value, lastExportedType]);
@@ -239,7 +243,7 @@ function App() {
     const deleteState = useCallback(async () => {
         confirm({
             headline: "Soft Logout",
-            description: "Are you sure you want to delete local FBState (soft logout)?",
+            description: "Are you sure you want to delete local UFC data (soft logout)?",
             confirmText: "Yes",
             cancelText: "No",
             onConfirm: async () => {
@@ -273,7 +277,7 @@ function App() {
 
                 alert({
                     headline: "Success",
-                    description: "Local FBState deleted successfully.",
+                    description: "Local UFC data deleted successfully.",
                 });
             }
         })
@@ -294,12 +298,12 @@ function App() {
                     justifyContent: 'space-between'
                 }}>
                     <div className="mdui-prose" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                        <h3 style={{ marginBottom: 0 }}>C3C FBState</h3>
-                        <small style={{ color: 'gray', marginTop: '10px' }}>v2.0</small>
+                        <h3 style={{ marginBottom: 0 }}>C3C UFC Utility</h3>
+                        <small style={{ color: 'gray', marginTop: '10px' }}>v2.0.1</small>
                     </div>
                     <div>
                         <mdui-tooltip content="Fork me on GitHub" placement='bottom-end'>
-                            <mdui-button-icon href='https://github.com/c3cbot/c3c-fbstate' target='_blank' rel="noreferrer">
+                            <mdui-button-icon href='https://github.com/c3cbot/c3c-ufc-utility' target='_blank' rel="noreferrer">
                                 <GitHubIcon />
                             </mdui-button-icon>
                         </mdui-tooltip>
@@ -326,7 +330,7 @@ function App() {
                                 <mdui-menu-item onClick={handleExportBase64}>Base64</mdui-menu-item>
                             </mdui-menu>
                         </mdui-dropdown>
-                        <mdui-tooltip variant="rich" onClick={deleteState} placement='top-end' content="Delete local FBState (logout without FBState invalidation)">
+                        <mdui-tooltip variant="rich" onClick={deleteState} placement='top-end' content="Delete local UFC data (logout without UFC invalidation)">
                             <mdui-button-icon variant="outlined">
                                 <LogoutIcon />
                             </mdui-button-icon>
@@ -345,7 +349,7 @@ function App() {
                             </mdui-icon>
                         </mdui-button>
                         <mdui-button onClick={handleSave} variant='filled' slot="trigger" style={{ flex: 1 }}>
-                            Save to&nbsp;<code>fbstate.json</code>
+                            Save to file
                             <mdui-icon slot="icon" style={fixIcon}>
                                 <SaveAsIcon />
                             </mdui-icon>

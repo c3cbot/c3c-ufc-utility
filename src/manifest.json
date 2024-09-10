@@ -1,8 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/cezaraugusto/chrome-extension-manifest-json-schema/main/manifest/manifest.schema.v3.json",
-    "name": "C3C FBState Utility",
+    "name": "C3C UFC Utility",
     "version": "0.0.0-TO.BE.FILLED.ON.BUILD",
-    "description": "Import/export fbstate.json which can be used to let bot login.",
+    "description": "Import/export UFC file from/to C3C-supported platforms.",
     "permissions": [
         "cookies",
         "clipboardRead"
