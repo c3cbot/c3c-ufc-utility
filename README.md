@@ -1,7 +1,7 @@
 # C3C UFC Utility
 
 [![Now available in Chrome Web Store!](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/c3c-fbstate-utility/ekgmbjnloldgikngiachemodebfpkgdp)&nbsp;&nbsp;
-[![Also available in Firefox Add-ons!](https://github.com/user-attachments/assets/0fcaef54-a46e-407f-9d65-13f8f135c2ab)](https://addons.mozilla.org/en-US/firefox/addon/ff-c3c-fbstate/)&nbsp;&nbsp;
+[![Also available in Firefox Add-ons!](https://github.com/user-attachments/assets/0fcaef54-a46e-407f-9d65-13f8f135c2ab)](https://addons.mozilla.org/en-US/firefox/addon/c3c-ufc-utility/)&nbsp;&nbsp;
 [![Microsoft Edge? Why not!](https://github.com/user-attachments/assets/e7bbf8f7-9fc2-49a4-bbb8-bddd23d036ce)](https://microsoftedge.microsoft.com/addons/detail/c3c-fbstate-utility/ghipjppkbhlomcadpjldhhcoolhpgngm)
 
 *(We're in the process of republishing under a new name for all stores. Extension ID should be the same as old names and you'll be updated automatically)*
