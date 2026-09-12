@@ -1,44 +1,101 @@
-{
-  "name": "c3c-ufc-utility",
-  "version": "2.0.1",
-  "private": true,
-  "description": "Import/export UFC file from/to C3C-supported platforms.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/c3cbot/c3c-ufc-utility.git"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
-  "author": "BadAimWeeb",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/c3cbot/c3c-ufc-utility/issues"
-  },
-  "dependencies": {
-    "@emotion/styled": "^11.13.0",
-    "@fontsource/roboto": "^5.0.14",
-    "@mui/icons-material": "^5.16.7",
-    "buffer": "^6.0.3",
-    "events": "^3.3.0",
-    "mdui": "^2.1.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "homepage": "https://github.com/c3cbot/c3c-ufc-utility#readme",
-  "devDependencies": {
-    "@types/chrome": "^0.0.270",
-    "@types/node": "^22.2.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "sass": "^1.77.8",
-    "typescript": "^5.5.3",
-    "vite": "^5.4.0",
-    "vite-plugin-execute": "^0.0.2"
-  },
-  "type": "module"
-}
+[
+	{
+		"key": "sb",
+		"value": "sLakaiukyQOGumYpDxQ3Y-xh",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "m_pixel_ratio",
+		"value": "2.934335231781006",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "dpr",
+		"value": "3.2261457443237305",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "datr",
+		"value": "3sykal8mkVvrQWXDqHU-mbkQ",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "ps_l",
+		"value": "1",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "ps_n",
+		"value": "1",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "wd",
+		"value": "774x1538",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "c_user",
+		"value": "100085529600193",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "fr",
+		"value": "1Z7i3IyEm9gQUur9g.AWfh928foC-gcyQYiR1hMszP1QyNp5R_DwrRq87cARfzDKq67OE.BqpM4Q..AAA.0.0.BqpM4Q.AWfhMgGTJ2xns4Rxe_PfgKOV2Uc",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "xs",
+		"value": "16%3AfENIan8mWeXXxA%3A2%3A1789185545%3A-1%3A-1%3A%3AAcwVOEIoEQbSGdBRAxEQ7soVkf2zYSv9Z7QoeCNDMA",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	},
+	{
+		"key": "presence",
+		"value": "C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1789185555368%2C%22v%22%3A1%7D",
+		"domain": "facebook.com",
+		"path": "/",
+		"hostOnly": false,
+		"creation": "2026-09-12T04:01:17.248Z",
+		"lastAccessed": "2026-09-12T04:01:17.248Z"
+	}
+]
